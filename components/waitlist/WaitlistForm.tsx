@@ -6,6 +6,11 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 const ROLES = ["Student", "Parent", "Coaching Institute"];
 
+const INPUT_CLASSES =
+  "w-full rounded-full border border-ink/12 bg-white px-5 py-3 text-sm text-ink placeholder:text-muted/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
+
+const LABEL_CLASSES = "mb-1.5 block text-left font-display text-xs font-bold uppercase tracking-wide text-muted";
+
 export default function WaitlistForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -42,10 +47,10 @@ export default function WaitlistForm() {
     return (
       <div className="rounded-2xl border border-teal-dark/25 bg-lavender p-6 text-center">
         <p className="font-display text-xs font-bold uppercase tracking-wide text-teal-dark">
-          You&#39;re on the list
+          You&#39;re in
         </p>
         <p className="mt-2 text-sm text-muted">
-          Check your inbox for a confirmation. We&#39;ll email you the moment early access opens.
+          Check your inbox for a confirmation. We&#39;ll send your beta access link as soon as it&#39;s ready.
         </p>
       </div>
     );
@@ -53,25 +58,33 @@ export default function WaitlistForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <label htmlFor="waitlist-email" className="sr-only">
-          Email address
-        </label>
-        <input
-          id="waitlist-email"
-          name="email"
-          type="email"
-          required
-          placeholder="you@example.com"
-          className="w-full flex-1 rounded-full border border-ink/12 bg-white px-5 py-3 text-sm text-ink placeholder:text-muted/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-        />
-        <button
-          type="submit"
-          disabled={status === "submitting"}
-          className="flex-shrink-0 rounded-full bg-ink px-6 py-3 font-display text-sm font-bold text-white transition-colors hover:bg-ink/90 disabled:opacity-60"
-        >
-          {status === "submitting" ? "Joining…" : "Join Waitlist"}
-        </button>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="waitlist-email" className={LABEL_CLASSES}>
+            Email
+          </label>
+          <input
+            id="waitlist-email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@example.com"
+            className={INPUT_CLASSES}
+          />
+        </div>
+        <div>
+          <label htmlFor="waitlist-phone" className={LABEL_CLASSES}>
+            Phone Number
+          </label>
+          <input
+            id="waitlist-phone"
+            name="phone"
+            type="tel"
+            required
+            placeholder="98765 43210"
+            className={INPUT_CLASSES}
+          />
+        </div>
       </div>
 
       <fieldset className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted sm:justify-start">
@@ -91,6 +104,14 @@ export default function WaitlistForm() {
       </fieldset>
 
       {status === "error" && <p className="text-center text-sm text-red-600 sm:text-left">{errorMessage}</p>}
+
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="w-full rounded-full bg-ink px-6 py-3 font-display text-sm font-bold text-white transition-colors hover:bg-ink/90 disabled:opacity-60"
+      >
+        {status === "submitting" ? "Joining…" : "Join the Beta"}
+      </button>
     </form>
   );
 }

@@ -4,9 +4,9 @@ import Card from "@/components/ui/Card";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
 
 export const metadata: Metadata = {
-  title: "Join the Waitlist",
+  title: "Join the Beta",
   description:
-    "MHTCET Simu is in final development. Join the waitlist to get early access and your free tier the moment we launch.",
+    "Become one of MHTCET Simu's privileged beta testers. Get full access for a limited period, completely free, and help us shape the product.",
   alternates: { canonical: "/waitlist" },
 };
 
@@ -33,16 +33,17 @@ export default function WaitlistPage() {
     <section className="mesh-gradient">
       <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 lg:px-8">
         <Badge tone="accent" className="mx-auto">
-          Coming Soon
+          Limited Beta Access
         </Badge>
         <h1 className="mt-5 text-4xl font-bold leading-[1.1] text-ink sm:text-5xl">
-          Be First to Practise
+          Become One of Our
           <br />
-          <span className="text-teal-dark">the Real MHT CET Exam</span>
+          <span className="text-teal-dark">Privileged Beta Testers</span>
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted">
-          MHTCET Simu is in final development. Join the waitlist and we&#39;ll
-          email you the moment early access opens, along with your free tier.
+          Help us make MHTCET Simu better before anyone else gets in. Sign up
+          now and get full access for a limited period, completely free, as
+          one of our first testers.
         </p>
 
         <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-ink/8 bg-white p-6 shadow-[0_16px_40px_rgba(15,23,42,0.08)] sm:p-8">
