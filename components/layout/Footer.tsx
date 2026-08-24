@@ -94,7 +94,16 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
-            <li className="text-muted/70">KOV Enterprises LLP</li>
+            <li>
+              <a
+                href="https://koventerprises.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted/70 hover:text-ink"
+              >
+                KOV Enterprises LLP
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -116,9 +125,19 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-ink/8">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <span>A KOV Enterprises LLP product</span>
-          <span>Made in Pune, Maharashtra 🇮🇳</span>
+        <div className="mx-auto max-w-6xl px-4 py-4 text-xs text-muted sm:px-6 lg:px-8">
+          <span>
+            A{" "}
+            <a
+              href="https://koventerprises.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-ink"
+            >
+              KOV Enterprises LLP
+            </a>{" "}
+            product
+          </span>
         </div>
       </div>
     </footer>
