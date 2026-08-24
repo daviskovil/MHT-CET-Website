@@ -1,7 +1,9 @@
 export const APP_URLS = {
-  register: "https://app.mhtcetsimu.in/register",
+  // The app isn't live yet — route signups to the waitlist instead of a
+  // dead subdomain. Swap these back once app.mhtcetsimu.in is real.
+  register: "/waitlist",
+  registerPro: "/waitlist",
   login: "https://app.mhtcetsimu.in/login",
-  registerPro: "https://app.mhtcetsimu.in/register?plan=pro",
 };
 
 // Placeholder handles — update once the real social accounts exist.
