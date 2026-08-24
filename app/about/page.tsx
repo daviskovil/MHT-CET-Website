@@ -96,6 +96,9 @@ const NOT_LIST = [
   },
 ];
 
+// Toggle back on when we're ready to reveal the founders publicly.
+const SHOW_FOUNDERS = false;
+
 const FOUNDERS = [
   {
     name: "Davis Rajan",
@@ -264,49 +267,51 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-cream">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Badge className="mx-auto">The Team</Badge>
-            <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
-              Meet the Founders
-            </h2>
-          </div>
-          <div className="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
-            {FOUNDERS.map((founder) => (
-              <div
-                key={founder.name}
-                className="rounded-2xl border border-ink/8 bg-white p-6 shadow-[0_4px_16px_rgba(15,23,42,0.05)]"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-teal/15 text-[10px] font-semibold uppercase tracking-wide text-teal-dark">
-                    Photo
+      {SHOW_FOUNDERS && (
+        <section className="bg-cream">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <Badge className="mx-auto">The Team</Badge>
+              <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
+                Meet the Founders
+              </h2>
+            </div>
+            <div className="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
+              {FOUNDERS.map((founder) => (
+                <div
+                  key={founder.name}
+                  className="rounded-2xl border border-ink/8 bg-white p-6 shadow-[0_4px_16px_rgba(15,23,42,0.05)]"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-teal/15 text-[10px] font-semibold uppercase tracking-wide text-teal-dark">
+                      Photo
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-ink">{founder.name}</h3>
+                      <p className="text-xs font-semibold text-primary">{founder.role}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-display font-bold text-ink">{founder.name}</h3>
-                    <p className="text-xs font-semibold text-primary">{founder.role}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-muted">{founder.bio}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {founder.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-lavender px-3 py-1 text-xs font-semibold text-teal-dark"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-muted">{founder.bio}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {founder.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-lavender px-3 py-1 text-xs font-semibold text-teal-dark"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-muted">
+              MHTCET Simu is built and operated by KOV Enterprises LLP, based in
+              Pune, Maharashtra.
+            </p>
           </div>
-          <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-muted">
-            MHTCET Simu is built and operated by KOV Enterprises LLP, based in
-            Pune, Maharashtra.
-          </p>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="bg-white px-4 pb-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl rounded-3xl bg-primary px-8 py-14 text-center">
