@@ -12,7 +12,7 @@ const PLANS = [
   },
   {
     name: "Pro",
-    price: "₹5,999",
+    price: "₹7,999",
     period: "/ year",
     description: "Unlimited everything",
     highlighted: true,

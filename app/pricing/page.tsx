@@ -6,7 +6,7 @@ import { APP_URLS } from "@/lib/urls";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Simple, transparent pricing. Start free or go Pro at ₹5,999/year. Institute licenses available.",
+    "Simple, transparent pricing. Start free or go Pro at ₹7,999/year. Institute licenses available.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -45,7 +45,7 @@ export default function PricingPage() {
             />
             <PricingCard
               name="Pro Student"
-              price="₹5,999"
+              price="₹7,999"
               period="/ year"
               highlighted
               features={[
