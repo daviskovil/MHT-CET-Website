@@ -8,6 +8,7 @@ import BlogCard from "@/components/blog/BlogCard";
 import BlogCTA from "@/components/blog/BlogCTA";
 import TableOfContents from "@/components/blog/TableOfContents";
 import { getAllPosts, getAllSlugs, getPostBySlug, getRelatedPosts, splitContentByWeights } from "@/lib/blog";
+import { extractFaqs } from "@/lib/faq";
 import { mdxComponents } from "@/lib/mdx-components";
 import { SITE_URL } from "@/lib/seo";
 import { extractToc } from "@/lib/toc";
@@ -63,9 +64,10 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   const toc = extractToc(post.content);
   const related = getRelatedPosts(slug, post.category);
+  const faqs = extractFaqs(post.content);
   const [part1, part2, part3] = splitContentByWeights(post.content, [1, 3, 3]);
 
-  const jsonLd = {
+  const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
@@ -76,12 +78,34 @@ export default async function BlogPostPage({
     ...(post.coverImageUrl && { image: `${SITE_URL}${post.coverImageUrl}` }),
   };
 
+  // FAQPage schema surfaces each Q&A pair directly to search engines and AI
+  // answer engines (Google's "People Also Ask", AI Overviews, ChatGPT/Perplexity
+  // citations), rather than requiring them to parse it out of prose.
+  const faqJsonLd =
+    faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+          })),
+        }
+      : null;
+
   return (
     <article className="bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <Link href="/study-guides" className="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-ink">

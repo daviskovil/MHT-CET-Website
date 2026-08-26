@@ -79,6 +79,13 @@ POSTS = [
         "category": "Chemistry",
         "variant": "chart",
     },
+    {
+        "slug": "top-physics-chapters-mht-cet",
+        "title": "Top 10 High-Weightage Chapters in MHT CET Physics",
+        "highlight": "High-Weightage Chapters",
+        "category": "Physics",
+        "variant": "chart",
+    },
 ]
 
 
